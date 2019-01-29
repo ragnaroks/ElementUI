@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ElementUI
+namespace ElementDemo.Views
 {
     /// <summary>
-    /// UserControl1.xaml 的交互逻辑
+    /// Button.xaml 的交互逻辑
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class Button : UserControl
     {
-        public UserControl1()
+        public Button()
         {
             InitializeComponent();
         }

@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="ElementDemo.Views.Button"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ElementDemo.Views"
+             xmlns:eui="clr-namespace:ElementUI;assembly=ElementUI"
+             mc:Ignorable="d">
+    <StackPanel Background="White">
+        <TextBlock Text="标准按钮"/>
+        <StackPanel Orientation="Horizontal">
+            <eui:Button Text="默认按钮" Width="72" Height="32"/>
+            <eui:Button Text="主要按钮" Width="72" Height="32" Type="primary"/>
+            <eui:Button Text="成功按钮" Width="72" Height="32" Type="success"/>
+            <eui:Button Text="信息按钮" Width="72" Height="32" Type="info"/>
+            <eui:Button Text="警告按钮" Width="72" Height="32" Type="warning"/>
+            <eui:Button Text="危险按钮" Width="72" Height="32" Type="danger"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
