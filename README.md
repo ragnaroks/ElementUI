@@ -2,10 +2,10 @@
 ElementUI for WPF(or XAML like)
 
 ### ToDo
-* [x] standard Button
+**Notice: No plan to implement "round Button"**
+* [ ] standard Button (WIP)
 * [ ] plain Button
 * [ ] circle Button
-* `Notice: No plan to implement "round Button"`
 
 ### Preview
-![Button List](https://i.imgur.com/NblCrRW.png)
+![preview](https://i.imgur.com/gxIeEIV.gif)

@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -51,6 +52,14 @@ namespace ElementUI{
         }
         private static readonly DependencyProperty TextColorHoverProperty = DependencyProperty.Register("TextColorHover", typeof(Color), typeof(Button), new PropertyMetadata(new Color() { R = 64, G =158, B =255, A = 255 }));
         /// <summary>
+        /// 文本颜色,禁用
+        /// </summary>
+        public Color TextColorDisabled {
+            get { return (Color)GetValue(TextColorDisabledProperty); }
+            private set { SetValue(TextColorDisabledProperty, value); }
+        }
+        private static readonly DependencyProperty TextColorDisabledProperty = DependencyProperty.Register("TextColorDisabled", typeof(Color), typeof(Button), new PropertyMetadata(new Color() { R = 192, G =196, B =204, A = 255 }));
+        /// <summary>
         /// 背景色
         /// </summary>
         public Color BackgroundColor {
@@ -66,6 +75,22 @@ namespace ElementUI{
             set { SetValue(BackgroundColorHoverProperty, value); }
         }
         public static readonly DependencyProperty BackgroundColorHoverProperty =DependencyProperty.Register("BackgroundColorHover", typeof(Color), typeof(Button), new PropertyMetadata(new Color(){R=236,G=245,B=255,A=255}));
+        /// <summary>
+        /// 背景色,激活
+        /// </summary>
+        public Color BackgroundColorActive {
+            get { return (Color)GetValue(BackgroundColorActiveProperty); }
+            set { SetValue(BackgroundColorActiveProperty, value); }
+        }
+        public static readonly DependencyProperty BackgroundColorActiveProperty =DependencyProperty.Register("BackgroundColorActive", typeof(Color), typeof(Button), new PropertyMetadata(new Color(){R=198,G=226,B=255,A=255}));
+        /// <summary>
+        /// 背景色,禁用
+        /// </summary>
+        public Color BackgroundColorDisabled {
+            get { return (Color)GetValue(BackgroundColorDisabledProperty); }
+            set { SetValue(BackgroundColorDisabledProperty, value); }
+        }
+        public static readonly DependencyProperty BackgroundColorDisabledProperty = DependencyProperty.Register("BackgroundColorDisabled", typeof(Color), typeof(Button), new PropertyMetadata(new Color() { R = 255, G = 255, B = 255, A = 255 }));
         /// <summary>
         /// 边框颜色
         /// </summary>
@@ -91,13 +116,13 @@ namespace ElementUI{
         }
         public static readonly DependencyProperty BorderColorActiveProperty =DependencyProperty.Register("BorderColorActive", typeof(Color), typeof(Button), new PropertyMetadata(new Color(){R=58,G=142,B=230,A=255}));
         /// <summary>
-        /// 背景色,激活
+        /// 边框颜色,禁用
         /// </summary>
-        public Color BackgroundColorActive {
-            get { return (Color)GetValue(BackgroundColorActiveProperty); }
-            set { SetValue(BackgroundColorActiveProperty, value); }
+        public Color BorderColorDisabled {
+            get { return (Color)GetValue(BorderColorDisabledProperty); }
+            private set { SetValue(BorderColorDisabledProperty, value); }
         }
-        public static readonly DependencyProperty BackgroundColorActiveProperty =DependencyProperty.Register("BackgroundColorActive", typeof(Color), typeof(Button), new PropertyMetadata(new Color(){R=198,G=226,B=255,A=255}));
+        private static readonly DependencyProperty BorderColorDisabledProperty = DependencyProperty.Register("BorderColorDisabled", typeof(Color), typeof(Button), new PropertyMetadata(new Color() { R = 235, G = 238, B = 245, A = 255 }));
         /// <summary>
         /// 是否按下
         /// </summary>
@@ -126,14 +151,20 @@ namespace ElementUI{
         private void Button_Loaded(object sender, RoutedEventArgs e){
             this.TextColor=ApplyTextColor();
             this.TextColorHover=ApplyTextColorHover();
+            this.TextColorDisabled=ApplyTextColorDisabled();
+
             this.BorderColor = ApplyBorderColor();
             this.BorderColorHover = ApplyBorderColorHover();
             this.BorderColorActive=ApplyBorderColorActive();
+            this.BorderColorDisabled=ApplyBorderColorDisabled();
+            
             this.BackgroundColor= ApplyBackgroundColor();
             this.BackgroundColorHover= ApplyBackgroundColorHover();
             this.BackgroundColorActive = ApplyBackgroundColorActive();
+            this.BackgroundColorDisabled=ApplyBackgroundColorDisabled();
         }
 
+        #region 应用边框颜色
         /// <summary>
         /// 应用边框颜色
         /// </summary>
@@ -186,6 +217,24 @@ namespace ElementUI{
             return c;
         }
         /// <summary>
+        /// 应用边框颜色,禁用
+        /// </summary>
+        /// <returns></returns>
+        private Color ApplyBorderColorDisabled(){
+            Color c = new Color { A = 255 };
+            switch (this.Type){
+                case "primary": c.R = 160; c.G = 207; c.B = 255; break;
+                case "success": c.R = 179; c.G =225; c.B =157; break;
+                case "info": c.R = 200; c.G = 201; c.B = 204; break;
+                case "warning": c.R = 243; c.G = 209; c.B = 158; break;
+                case "danger": c.R = 250; c.G = 182; c.B = 182; break;
+                default: c.R = 235; c.G = 238; c.B =245; break;
+            }
+            return c;
+        }
+        #endregion
+        #region 应用文本颜色
+        /// <summary>
         /// 应用文本颜色
         /// </summary>
         /// <returns></returns>
@@ -219,6 +268,24 @@ namespace ElementUI{
             }
             return c;
         }
+        /// <summary>
+        /// 应用文本颜色,禁用
+        /// </summary>
+        /// <returns></returns>
+        private Color ApplyTextColorDisabled(){
+            Color c = new Color { A = 255 };
+            switch (this.Type){
+                case "primary":
+                case "success":
+                case "info":
+                case "warning":
+                case "danger": c.R = 255; c.G = 255; c.B = 255; break;
+                default: c.R = 192; c.G = 196; c.B = 204; break;
+            }
+            return c;
+        }
+        #endregion
+        #region 应用背景色
         /// <summary>
         /// 应用背景色
         /// </summary>
@@ -270,7 +337,23 @@ namespace ElementUI{
             }
             return c;
         }
-
+        /// <summary>
+        /// 应用背景色,禁用
+        /// </summary>
+        /// <returns></returns>
+        private Color ApplyBackgroundColorDisabled(){
+            Color c = new Color { A = 255 };
+            switch (this.Type){
+                case "primary": c.R = 160; c.G = 207; c.B = 255; break;
+                case "success": c.R = 179; c.G =225; c.B =157; break;
+                case "info": c.R = 200; c.G = 201; c.B = 204; break;
+                case "warning": c.R = 243; c.G = 209; c.B = 158; break;
+                case "danger": c.R = 250; c.G = 182; c.B = 182; break;
+                default: c.R = 255; c.G = 255; c.B =255; break;
+            }
+            return c;
+        }
+        #endregion
         /// <summary>
         /// 左键按下
         /// </summary>
@@ -291,6 +374,22 @@ namespace ElementUI{
             if (this.Click == null) { return;}
             this.Click(sender,e);
             e.Handled=false;
+        }
+        /// <summary>
+        /// 可用状态改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserControl_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e){
+            if(this.IsEnabled){
+                Object o=TryFindResource("sb_bgc_tn");
+                if(o == null || !(o is Storyboard)) { return;}
+                (o as Storyboard).Begin();
+            } else {
+                Object o=TryFindResource("sb_bgc_td");
+                if(o == null || !(o is Storyboard)) { return;}
+                (o as Storyboard).Begin();
+            }
         }
     }
 }
