@@ -5,24 +5,14 @@
         xmlns:vms="clr-namespace:ElementDemo.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:eui="clr-namespace:ElementUI;assembly=ElementUI"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=vms:MainWindowViewModel,IsDesignTimeCreatable=True}"
-        prism:ViewModelLocator.AutoWireViewModel="True" SizeToContent="WidthAndHeight" Title="{Binding Path=Title}" MinHeight="240" MinWidth="360">
-    <StackPanel>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
-        <StackPanel Background="White" Margin="8">
-            <GroupBox Header="标准按钮">
-                <GroupItem>
-                    <StackPanel Orientation="Horizontal">
-                        <eui:Button Text="默认按钮" Type="default" Margin="4"/>
-                        <eui:Button Text="主要按钮" Type="primary" Margin="4"/>
-                        <eui:Button Text="成功按钮" Type="success" Margin="4"/>
-                        <eui:Button Text="信息按钮" Type="info" Margin="4"/>
-                        <eui:Button Text="警告按钮" Type="warning" Margin="4"/>
-                        <eui:Button Text="危险按钮" Type="danger" Margin="4"/>
-                    </StackPanel>
-                </GroupItem>
-            </GroupBox>
-        </StackPanel>
+        prism:ViewModelLocator.AutoWireViewModel="True" SizeToContent="WidthAndHeight" Title="{Binding Path=Title}" MinHeight="240" MinWidth="360" ResizeMode="CanMinimize">
+    <StackPanel Margin="4">
+        <TabControl>
+            <TabItem Header="Button 按钮">
+                <ContentControl prism:RegionManager.RegionName="Region_Button" Margin="8"/>
+            </TabItem>
+            <TabItem Header="Radio 单选框">NULL</TabItem>
+        </TabControl>
     </StackPanel>
 </Window>

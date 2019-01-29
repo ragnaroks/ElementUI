@@ -82,7 +82,34 @@ namespace ElementUI{
             private set { SetValue(BorderColorHoverProperty, value); }
         }
         private static readonly DependencyProperty BorderColorHoverProperty = DependencyProperty.Register("BorderColorHover", typeof(Color), typeof(Button), new PropertyMetadata(new Color() { R = 198, G = 226, B = 255, A = 255 }));
-
+        /// <summary>
+        /// 边框颜色,激活
+        /// </summary>
+        public Color BorderColorActive {
+            get { return (Color)GetValue(BorderColorActiveProperty); }
+            set { SetValue(BorderColorActiveProperty, value); }
+        }
+        public static readonly DependencyProperty BorderColorActiveProperty =DependencyProperty.Register("BorderColorActive", typeof(Color), typeof(Button), new PropertyMetadata(new Color(){R=58,G=142,B=230,A=255}));
+        /// <summary>
+        /// 背景色,激活
+        /// </summary>
+        public Color BackgroundColorActive {
+            get { return (Color)GetValue(BackgroundColorActiveProperty); }
+            set { SetValue(BackgroundColorActiveProperty, value); }
+        }
+        public static readonly DependencyProperty BackgroundColorActiveProperty =DependencyProperty.Register("BackgroundColorActive", typeof(Color), typeof(Button), new PropertyMetadata(new Color(){R=198,G=226,B=255,A=255}));
+        /// <summary>
+        /// 是否按下
+        /// </summary>
+        public Boolean Press {
+            get { return (Boolean)GetValue(PressProperty); }
+            set { SetValue(PressProperty, value); }
+        }
+        public static readonly DependencyProperty PressProperty =DependencyProperty.Register("Press", typeof(Boolean), typeof(Button), new PropertyMetadata(false));
+        /// <summary>
+        /// 点击事件
+        /// </summary>
+        public event EventHandler Click;
 
         /// <summary>
         /// 构造
@@ -101,8 +128,10 @@ namespace ElementUI{
             this.TextColorHover=ApplyTextColorHover();
             this.BorderColor = ApplyBorderColor();
             this.BorderColorHover = ApplyBorderColorHover();
+            this.BorderColorActive=ApplyBorderColorActive();
             this.BackgroundColor= ApplyBackgroundColor();
             this.BackgroundColorHover= ApplyBackgroundColorHover();
+            this.BackgroundColorActive = ApplyBackgroundColorActive();
         }
 
         /// <summary>
@@ -110,8 +139,7 @@ namespace ElementUI{
         /// </summary>
         /// <returns></returns>
         private Color ApplyBorderColor(){
-            Color c = new Color();
-            c.A = 255;
+            Color c = new Color { A = 255 };
             switch (this.Type){
                 case "primary": c.R = 64; c.G = 158; c.B = 255; break;
                 case "success": c.R = 103; c.G = 194; c.B = 58; break;
@@ -128,8 +156,7 @@ namespace ElementUI{
         /// </summary>
         /// <returns></returns>
         private Color ApplyBorderColorHover(){
-            Color c = new Color();
-            c.A = 255;
+            Color c = new Color { A = 255 };
             switch (this.Type){
                 case "primary": c.R = 102; c.G = 177; c.B = 255; break;
                 case "success": c.R = 133; c.G = 206; c.B = 97; break;
@@ -142,12 +169,28 @@ namespace ElementUI{
             return c;
         }
         /// <summary>
+        /// 应用边框颜色,激活
+        /// </summary>
+        /// <returns></returns>
+        private Color ApplyBorderColorActive(){
+            Color c = new Color { A = 255 };
+            switch (this.Type){
+                case "primary": c.R = 58; c.G = 142; c.B = 230; break;
+                case "success": c.R = 93; c.G = 175; c.B = 52; break;
+                case "info": c.R = 130; c.G = 132; c.B = 138; break;
+                case "warning": c.R = 207; c.G = 146; c.B = 54;break;
+                case "danger": c.R = 221; c.G = 97; c.B = 97; break;
+                case "defualt":
+                default: c.R = 58; c.G = 142; c.B = 230; break;
+            }
+            return c;
+        }
+        /// <summary>
         /// 应用文本颜色
         /// </summary>
         /// <returns></returns>
         private Color ApplyTextColor(){
-            Color c = new Color();
-            c.A = 255;
+            Color c = new Color { A = 255 };
             switch (this.Type){
                 case "primary":
                 case "success":
@@ -164,8 +207,7 @@ namespace ElementUI{
         /// </summary>
         /// <returns></returns>
         private Color ApplyTextColorHover(){
-            Color c = new Color();
-            c.A = 255;
+            Color c = new Color { A = 255 };
             switch (this.Type){
                 case "primary":
                 case "success":
@@ -182,8 +224,7 @@ namespace ElementUI{
         /// </summary>
         /// <returns></returns>
         private Color ApplyBackgroundColor(){
-            Color c = new Color();
-            c.A = 255;
+            Color c = new Color { A = 255 };
             switch (this.Type){
                 case "primary":c.R=64;c.G=158;c.B=255;break;
                 case "success": c.R = 103; c.G = 194; c.B = 58; break;
@@ -200,8 +241,7 @@ namespace ElementUI{
         /// </summary>
         /// <returns></returns>
         private Color ApplyBackgroundColorHover(){
-            Color c = new Color();
-            c.A = 255;
+            Color c = new Color { A = 255 };
             switch (this.Type){
                 case "primary": c.R = 102; c.G = 177; c.B = 255; break;
                 case "success": c.R = 133; c.G = 206; c.B = 97; break;
@@ -212,6 +252,45 @@ namespace ElementUI{
                 default: c.R = 236; c.G =245; c.B = 255;break;
             }
             return c;
+        }
+        /// <summary>
+        /// 应用背景色,激活
+        /// </summary>
+        /// <returns></returns>
+        private Color ApplyBackgroundColorActive(){
+            Color c = new Color{A = 255};
+            switch (this.Type){
+                case "primary": c.R = 58; c.G = 142; c.B = 230; break;
+                case "success": c.R = 93; c.G = 175; c.B = 52; break;
+                case "info": c.R = 130; c.G = 132; c.B = 138; break;
+                case "warning": c.R = 207; c.G = 146; c.B = 54; break;
+                case "danger": c.R = 221; c.G = 97; c.B = 97; break;
+                case "defualt":
+                default: c.R = 236; c.G = 245; c.B = 255; break;
+            }
+            return c;
+        }
+
+        /// <summary>
+        /// 左键按下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            if (!this.Border_Wrap.IsMouseOver){return;}
+                this.Press=true;
+        }
+        /// <summary>
+        /// 左键弹起
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
+            if(!this.Border_Wrap.IsMouseOver||!this.Press){return;}
+            this.Press=false;
+            if (this.Click == null) { return;}
+            this.Click(sender,e);
+            e.Handled=false;
         }
     }
 }

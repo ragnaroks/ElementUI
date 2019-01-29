@@ -5,12 +5,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:ElementUI"
     mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=local:Button,IsDesignTimeCreatable=True}"
-    DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand" MinHeight="40" MinWidth="98" SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display" RenderOptions.EdgeMode="Aliased">
+    DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand" MinHeight="40" MinWidth="98"
+    SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display" RenderOptions.EdgeMode="Aliased"
+    MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp">
     <UserControl.Resources>
         <Storyboard x:Key="sb_bgc_th">
             <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorHover}"/>
             <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorHover}"/>
             <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorHover}"/>
+        </Storyboard>
+        <Storyboard x:Key="sb_bgc_ta">
+            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorActive}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorActive}"/>
         </Storyboard>
         <Storyboard x:Key="sb_bgc_tn">
             <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColor}"/>
@@ -24,6 +30,12 @@
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="Border_Wrap">
             <BeginStoryboard Storyboard="{StaticResource sb_bgc_tn}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="Border_Wrap">
+            <BeginStoryboard Storyboard="{StaticResource sb_bgc_ta}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp" SourceName="Border_Wrap">
+            <BeginStoryboard Storyboard="{StaticResource sb_bgc_th}"/>
         </EventTrigger>
     </UserControl.Triggers>
     <Border x:Name="Border_Wrap" BorderThickness="1" CornerRadius="3">

@@ -12,17 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ElementUI;
 
 namespace ElementDemo.Views
 {
     /// <summary>
     /// Button.xaml 的交互逻辑
     /// </summary>
-    public partial class Button : UserControl
-    {
-        public Button()
-        {
+    public partial class ButtonView : UserControl{
+        public ButtonView(){
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, EventArgs e) {
+            ElementUI.Button _this =sender as ElementUI.Button;
+            MessageBox.Show(_this.Text,"标准按钮");
         }
     }
 }
