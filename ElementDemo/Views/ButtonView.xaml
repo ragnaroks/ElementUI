@@ -20,12 +20,19 @@
                         <TextBlock Text="是否启用(IsEnabled)"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <eui:Button Text="默认按钮" Type="default" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
-                        <eui:Button Text="主要按钮" Type="primary" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
-                        <eui:Button Text="成功按钮" Type="success" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
-                        <eui:Button Text="信息按钮" Type="info" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
-                        <eui:Button Text="警告按钮" Type="warning" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
-                        <eui:Button Text="危险按钮" Type="danger" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
+                        <eui:Button Text="默认按钮" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}" ToolTip="具有默认大小,默认类型,即不赋予Type和Size属性"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <eui:Button Text="主要按钮 Type=primary" Type="primary" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
+                        <eui:Button Text="成功按钮 Type=success" Type="success" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
+                        <eui:Button Text="信息按钮 Type=info" Type="info" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
+                        <eui:Button Text="警告按钮 Type=warning" Type="warning" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
+                        <eui:Button Text="危险按钮 Type=danger" Type="danger" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <eui:Button Text="中型按钮 Size=medium" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}" Size="medium"/>
+                        <eui:Button Text="小型按钮 Size=small" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}" Size="small"/>
+                        <eui:Button Text="超小按钮 Size=mini" Margin="4" Click="Button_Click" IsEnabled="{Binding ElementName=CheckBox_IsEnabled,Path=IsChecked}" Size="mini"/>
                     </StackPanel>
                 </StackPanel>
             </GroupItem>

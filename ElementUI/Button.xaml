@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:ElementUI"
     mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=local:Button,IsDesignTimeCreatable=True}"
-    DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand" MinHeight="40" MinWidth="98"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand" Height="40" MinWidth="98"
     SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display" RenderOptions.EdgeMode="Aliased"
     MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" IsEnabledChanged="UserControl_IsEnabledChanged">
     <UserControl.Resources>
@@ -50,12 +50,14 @@
         <Border.Background>
             <SolidColorBrush Color="{Binding Path=BackgroundColor}"></SolidColorBrush>
         </Border.Background>
-        <StackPanel x:Name="StackPanel_Panel" Orientation="Horizontal">
-            <TextBlock x:Name="TextBlock_Text" Text="{Binding Path=Text}" TextBlock.TextAlignment="Center" FontSize="14" Width="{Binding ActualWidth, ElementName=StackPanel_Panel, Mode=OneWay}" VerticalAlignment="Center">
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="{Binding Path=TextColor}"/>
-                </TextBlock.Foreground>
-            </TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock x:Name="TextBlock_Text" Text="{Binding Path=Text}" FontSize="14" Margin="20,0">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{Binding Path=TextColor}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
     </Border>
 </UserControl>
