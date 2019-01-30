@@ -1,11 +1,14 @@
 ### About
-ElementUI for WPF(or XAML like)
+ElementUI for WPF(or XAML like),  
+base on .Net Framework 4.5,no other dependence.  
+
+[Element](https://github.com/ElemeFE/element)
 
 ### ToDo
 **Notice: No plan to implement "round Button"**
-* [ ] standard Button (WIP)
-* [ ] plain Button
-* [ ] circle Button
+* [x] standard Button
+* [x] plain Button
+* [ ] circle Button (WIP)
 
 ### Preview
-![preview](https://i.imgur.com/gxIeEIV.gif)
+![preview](https://i.imgur.com/X12Qlj2.png)

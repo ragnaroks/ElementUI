@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:ElementUI"
     mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=local:PlainButton,IsDesignTimeCreatable=True}"
     DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand" Height="40" MinWidth="98"
-    SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display" RenderOptions.EdgeMode="Aliased" IsEnabledChanged="UserControl_IsEnabledChanged">
+    SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display" RenderOptions.EdgeMode="Aliased"
+    IsEnabledChanged="UserControl_IsEnabledChanged" MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp">
     <UserControl.Resources>
         <Storyboard x:Key="sb_bgc_th">
             <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorHover}"/>
@@ -19,8 +20,6 @@
             <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorActive}"/>
         </Storyboard>
         <Storyboard x:Key="sb_bgc_td">
-            <!--<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorDisabled}"/>
-            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorDisabled}"/>-->
             <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorDisabled}"/>
         </Storyboard>
         <Storyboard x:Key="sb_bgc_tn">

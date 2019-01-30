@@ -135,6 +135,7 @@ namespace ElementUI {
         }
         private static readonly DependencyProperty IsPressProperty =DependencyProperty.Register("IsPress", typeof(Boolean), typeof(PlainButton), new PropertyMetadata(false));
         #endregion
+        public event EventHandler Click;
     
         /// <summary>
         /// 构造
@@ -388,6 +389,27 @@ namespace ElementUI {
                 if(o == null || !(o is Storyboard)) { return;}
                 (o as Storyboard).Begin();
             }
+        }
+        /// <summary>
+        /// 左键按下
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            if (!this.Border_Wrap.IsMouseOver){return;}
+                this.IsPress=true;
+        }
+        /// <summary>
+        /// 左键弹起
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
+            if(!this.Border_Wrap.IsMouseOver||!this.IsPress){return;}
+            this.IsPress=false;
+            if (this.Click == null) { return;}
+            this.Click(sender,e);
+            e.Handled=false;
         }
         #endregion
     }
