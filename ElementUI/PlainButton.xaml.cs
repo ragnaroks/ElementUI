@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -18,6 +19,7 @@ namespace ElementUI {
     /// PlainButton.xaml 的交互逻辑
     /// </summary>
     public partial class PlainButton:UserControl {
+        #region 公开属性
         /// <summary>
         /// 按钮文本
         /// </summary>
@@ -25,7 +27,7 @@ namespace ElementUI {
             get { return (String)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
-        public static readonly DependencyProperty TextProperty =DependencyProperty.Register("Text", typeof(String), typeof(PlainButton), new PropertyMetadata("朴素按钮"));
+        private static readonly DependencyProperty TextProperty =DependencyProperty.Register("Text", typeof(String), typeof(PlainButton), new PropertyMetadata("朴素按钮"));
         /// <summary>
         /// 按钮类型
         /// </summary>
@@ -35,86 +37,105 @@ namespace ElementUI {
         }
         private static readonly DependencyProperty TypeProperty =DependencyProperty.Register("Type", typeof(String), typeof(PlainButton), new PropertyMetadata(String.Empty));
         /// <summary>
+        /// 按钮尺寸
+        /// </summary>
+        public String Size {
+            get { return (String)GetValue(SizeProperty); }
+            set { SetValue(SizeProperty, value); }
+        }
+        private static readonly DependencyProperty SizeProperty =DependencyProperty.Register("Size", typeof(String), typeof(PlainButton), new PropertyMetadata(String.Empty));
+        #endregion
+        #region 私有属性
+        /// <summary>
         /// 文本颜色
         /// </summary>
-        public Color TextColor {
+        private Color TextColor {
             get { return (Color)GetValue(TextColorProperty); }
-            private set { SetValue(TextColorProperty, value); }
+            set { SetValue(TextColorProperty, value); }
         }
         private static readonly DependencyProperty TextColorProperty =DependencyProperty.Register("TextColor", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=96,G=98,B=102,A=255}));
         /// <summary>
         /// 文本颜色,悬浮
         /// </summary>
-        public Color TextColorHover {
+        private Color TextColorHover {
             get { return (Color)GetValue(TextColorHoverProperty); }
-            private set { SetValue(TextColorHoverProperty, value); }
+            set { SetValue(TextColorHoverProperty, value); }
         }
         private static readonly DependencyProperty TextColorHoverProperty = DependencyProperty.Register("TextColorHover", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color() { R = 64, G =158, B =255, A = 255 }));
         /// <summary>
         /// 文本颜色,激活
         /// </summary>
-        public Color TextColorActive {
+        private Color TextColorActive {
             get { return (Color)GetValue(TextColorActiveProperty); }
-            private set { SetValue(TextColorActiveProperty, value); }
+            set { SetValue(TextColorActiveProperty, value); }
         }
         private static readonly DependencyProperty TextColorActiveProperty = DependencyProperty.Register("TextColorActive", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color() { R = 58, G =142, B =230, A = 255 }));
         /// <summary>
+        /// 文本颜色,禁用
+        /// </summary>
+        private Color TextColorDisabled {
+            get { return (Color)GetValue(TextColorDisabledProperty); }
+            set { SetValue(TextColorDisabledProperty, value); }
+        }
+        private static readonly DependencyProperty TextColorDisabledProperty = DependencyProperty.Register("TextColorDisabled", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color() { R = 192, G =196, B =204, A = 255 }));
+        /// <summary>
         /// 背景色
         /// </summary>
-        public Color BackgroundColor {
+        private Color BackgroundColor {
             get { return (Color)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
         }
-        public static readonly DependencyProperty BackgroundColorProperty =DependencyProperty.Register("BackgroundColor", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=255,G=255,B=255,A=255}));
+        private static readonly DependencyProperty BackgroundColorProperty =DependencyProperty.Register("BackgroundColor", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=255,G=255,B=255,A=255}));
         /// <summary>
         /// 背景色,悬浮
         /// </summary>
-        public Color BackgroundColorHover {
+        private Color BackgroundColorHover {
             get { return (Color)GetValue(BackgroundColorHoverProperty); }
             set { SetValue(BackgroundColorHoverProperty, value); }
         }
-        public static readonly DependencyProperty BackgroundColorHoverProperty =DependencyProperty.Register("BackgroundColorHover", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=255,G=255,B=255,A=255}));
+        private static readonly DependencyProperty BackgroundColorHoverProperty =DependencyProperty.Register("BackgroundColorHover", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=255,G=255,B=255,A=255}));
         /// <summary>
         /// 背景色,激活
         /// </summary>
-        public Color BackgroundColorActive {
+        private Color BackgroundColorActive {
             get { return (Color)GetValue(BackgroundColorActiveProperty); }
             set { SetValue(BackgroundColorActiveProperty, value); }
         }
-        public static readonly DependencyProperty BackgroundColorActiveProperty =DependencyProperty.Register("BackgroundColorActive", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=255,G=255,B=255,A=255}));
+        private static readonly DependencyProperty BackgroundColorActiveProperty =DependencyProperty.Register("BackgroundColorActive", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=255,G=255,B=255,A=255}));
         /// <summary>
         /// 边框颜色
         /// </summary>
-        public Color BorderColor {
+        private Color BorderColor {
             get { return (Color)GetValue(BorderColorProperty); }
-            private set { SetValue(BorderColorProperty, value); }
+            set { SetValue(BorderColorProperty, value); }
         }
         private static readonly DependencyProperty BorderColorProperty = DependencyProperty.Register("BorderColor", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color() { R = 220, G = 223, B = 230, A = 255 }));
         /// <summary>
         /// 边框颜色,悬浮
         /// </summary>
-        public Color BorderColorHover {
+        private Color BorderColorHover {
             get { return (Color)GetValue(BorderColorHoverProperty); }
-            private set { SetValue(BorderColorHoverProperty, value); }
+            set { SetValue(BorderColorHoverProperty, value); }
         }
         private static readonly DependencyProperty BorderColorHoverProperty = DependencyProperty.Register("BorderColorHover", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color() { R = 64, G = 158, B = 255, A = 255 }));
         /// <summary>
         /// 边框颜色,激活
         /// </summary>
-        public Color BorderColorActive {
+        private Color BorderColorActive {
             get { return (Color)GetValue(BorderColorActiveProperty); }
             set { SetValue(BorderColorActiveProperty, value); }
         }
-        public static readonly DependencyProperty BorderColorActiveProperty =DependencyProperty.Register("BorderColorActive", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=58,G=142,B=230,A=255}));
+        private static readonly DependencyProperty BorderColorActiveProperty =DependencyProperty.Register("BorderColorActive", typeof(Color), typeof(PlainButton), new PropertyMetadata(new Color(){R=58,G=142,B=230,A=255}));
         /// <summary>
         /// 是否按下
         /// </summary>
-        public Boolean Press {
-            get { return (Boolean)GetValue(PressProperty); }
-            set { SetValue(PressProperty, value); }
+        private Boolean IsPress {
+            get { return (Boolean)GetValue(IsPressProperty); }
+            set { SetValue(IsPressProperty, value); }
         }
-        public static readonly DependencyProperty PressProperty =DependencyProperty.Register("Press", typeof(Boolean), typeof(PlainButton), new PropertyMetadata(false));
-
+        private static readonly DependencyProperty IsPressProperty =DependencyProperty.Register("IsPress", typeof(Boolean), typeof(PlainButton), new PropertyMetadata(false));
+        #endregion
+    
         /// <summary>
         /// 构造
         /// </summary>
@@ -131,12 +152,19 @@ namespace ElementUI {
             this.TextColor=ApplyTextColor();
             this.TextColorHover=ApplyTextColorHover();
             this.TextColorActive=ApplyTextColorActive();
+            this.TextColorDisabled=ApplyTextColorDisabled();
+
             this.BackgroundColor=ApplyBackgroundColor();
             this.BackgroundColorHover=ApplyBackgroundColorHover();
             this.BackgroundColorActive=ApplyBackgroundColorActive();
             this.BorderColor=ApplyBorderColor();
             this.BorderColorHover=ApplyBorderColorHover();
             this.BorderColorActive=ApplyBorderColorActive();
+
+            this.Height=ApplyHeight();
+            this.MinWidth=ApplyMinWidth();
+
+            this.TextBlock_Text.FontSize=ApplyFontSize();
         }
 
         #region 应用文本颜色
@@ -185,6 +213,22 @@ namespace ElementUI {
                 case "warning":
                 case "danger": c.R = 255; c.G =255; c.B =255; break;
                 default: c.R = 58; c.G = 142; c.B = 230; break;
+            }
+            return c;
+        }
+        /// <summary>
+        /// 应用文本颜色,禁用
+        /// </summary>
+        /// <returns></returns>
+        private Color ApplyTextColorDisabled() {
+            Color c = new Color { A = 255 };
+            switch (this.Type){
+                case "primary":c.R=140;c.G=197;c.B=255;break;
+                case "success":c.R=164;c.G=218;c.B=137;break;
+                case "info":c.R=188;c.G=190;c.B=194;break;
+                case "warning":c.R=240;c.G=199;c.B=138;break;
+                case "danger": c.R = 249; c.G =167; c.B =167; break;
+                default: c.R = 192; c.G = 196; c.B = 204; break;
             }
             return c;
         }
@@ -287,6 +331,63 @@ namespace ElementUI {
                 default: c.R = 58; c.G = 142; c.B =230; break;
             }
             return c;
+        }
+        #endregion
+        #region 应用按钮宽高
+        /// <summary>
+        /// 应用按钮宽
+        /// </summary>
+        private Double ApplyMinWidth(){
+            switch(this.Size){
+                case "medium":return 98;
+                case "small":return 80;
+                case "mini":return 80;
+                default:return 98;
+            }
+        }
+        /// <summary>
+        /// 应用按钮高
+        /// </summary>
+        /// <returns></returns>
+        private Double ApplyHeight(){
+            switch(this.Size){
+                case "medium":return 36;
+                case "small":return 32;
+                case "mini":return 28;
+                default:return 40;
+            }
+        }
+        #endregion
+        #region 应用文本大小
+        /// <summary>
+        /// 应用文本大小
+        /// </summary>
+        /// <returns></returns>
+        private Double ApplyFontSize() {
+            switch (this.Size) {
+                case "medium":return 14;
+                case "small":return 12;
+                case "mini":return 12;
+                default:return 14;
+            }
+        }
+        #endregion
+        #region 事件
+        /// <summary>
+        /// 可用状态改变
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserControl_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e){
+            if(this.IsEnabled){
+                Object o=TryFindResource("sb_bgc_tn");
+                if(o == null || !(o is Storyboard)) { return;}
+                (o as Storyboard).Begin();
+            } else {
+                Object o=TryFindResource("sb_bgc_td");
+                if(o == null || !(o is Storyboard)) { return;}
+                (o as Storyboard).Begin();
+            }
         }
         #endregion
     }

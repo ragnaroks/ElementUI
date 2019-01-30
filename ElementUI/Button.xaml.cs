@@ -19,6 +19,7 @@ namespace ElementUI{
     /// Button.xaml 的交互逻辑
     /// </summary>
     public partial class Button : UserControl{
+        #region 公开属性
         /// <summary>
         /// 按钮文本
         /// </summary>
@@ -35,6 +36,16 @@ namespace ElementUI{
             set { SetValue(TypeProperty, value); }
         }
         private static readonly DependencyProperty TypeProperty =DependencyProperty.Register("Type", typeof(String), typeof(Button), new PropertyMetadata(String.Empty));
+        /// <summary>
+        /// 尺寸
+        /// </summary>
+        public String Size {
+            get { return (String)GetValue(SizeProperty); }
+            set { SetValue(SizeProperty, value); }
+        }
+        private static readonly DependencyProperty SizeProperty =DependencyProperty.Register("Size", typeof(String), typeof(Button), new PropertyMetadata(String.Empty));
+        #endregion
+        #region 私有属性
         /// <summary>
         /// 文本颜色
         /// </summary>
@@ -124,24 +135,15 @@ namespace ElementUI{
         }
         private static readonly DependencyProperty BorderColorDisabledProperty = DependencyProperty.Register("BorderColorDisabled", typeof(Color), typeof(Button), new PropertyMetadata(new Color() { R = 235, G = 238, B = 245, A = 255 }));
         /// <summary>
-        /// 尺寸
-        /// </summary>
-        public String Size {
-            get { return (String)GetValue(SizeProperty); }
-            set { SetValue(SizeProperty, value); }
-        }
-        private static readonly DependencyProperty SizeProperty =DependencyProperty.Register("Size", typeof(String), typeof(Button), new PropertyMetadata(String.Empty));
-
-
-
-        /// <summary>
         /// 是否按下
         /// </summary>
-        public Boolean Press {
-            get { return (Boolean)GetValue(PressProperty); }
-            set { SetValue(PressProperty, value); }
+        private Boolean IsPress {
+            get { return (Boolean)GetValue(IsPressProperty); }
+            set { SetValue(IsPressProperty, value); }
         }
-        public static readonly DependencyProperty PressProperty =DependencyProperty.Register("Press", typeof(Boolean), typeof(Button), new PropertyMetadata(false));
+        private static readonly DependencyProperty IsPressProperty =DependencyProperty.Register("IsPress", typeof(Boolean), typeof(Button), new PropertyMetadata(false));
+        #endregion
+
         /// <summary>
         /// 点击事件
         /// </summary>
@@ -395,6 +397,7 @@ namespace ElementUI{
             }
         }
         #endregion
+        #region 应用文本大小
         /// <summary>
         /// 应用文本大小
         /// </summary>
@@ -407,6 +410,8 @@ namespace ElementUI{
                 default:return 14;
             }
         }
+        #endregion
+        #region 事件
         /// <summary>
         /// 左键按下
         /// </summary>
@@ -414,7 +419,7 @@ namespace ElementUI{
         /// <param name="e"></param>
         private void UserControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
             if (!this.Border_Wrap.IsMouseOver){return;}
-                this.Press=true;
+                this.IsPress=true;
         }
         /// <summary>
         /// 左键弹起
@@ -422,8 +427,8 @@ namespace ElementUI{
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) {
-            if(!this.Border_Wrap.IsMouseOver||!this.Press){return;}
-            this.Press=false;
+            if(!this.Border_Wrap.IsMouseOver||!this.IsPress){return;}
+            this.IsPress=false;
             if (this.Click == null) { return;}
             this.Click(sender,e);
             e.Handled=false;
@@ -444,5 +449,6 @@ namespace ElementUI{
                 (o as Storyboard).Begin();
             }
         }
+        #endregion
     }
 }

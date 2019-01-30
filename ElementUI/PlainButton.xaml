@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:ElementUI"
     mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=local:PlainButton,IsDesignTimeCreatable=True}"
-    DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand" MinHeight="40" MinWidth="98"
-    SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display" RenderOptions.EdgeMode="Aliased">
+    DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand" Height="40" MinWidth="98"
+    SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display" RenderOptions.EdgeMode="Aliased" IsEnabledChanged="UserControl_IsEnabledChanged">
     <UserControl.Resources>
         <Storyboard x:Key="sb_bgc_th">
             <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorHover}"/>
@@ -17,6 +17,11 @@
             <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorActive}"/>
             <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorActive}"/>
             <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorActive}"/>
+        </Storyboard>
+        <Storyboard x:Key="sb_bgc_td">
+            <!--<ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorDisabled}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorDisabled}"/>-->
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorDisabled}"/>
         </Storyboard>
         <Storyboard x:Key="sb_bgc_tn">
             <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColor}"/>
@@ -45,12 +50,14 @@
         <Border.Background>
             <SolidColorBrush Color="{Binding Path=BackgroundColor}"></SolidColorBrush>
         </Border.Background>
-        <StackPanel x:Name="StackPanel_Panel" Orientation="Horizontal">
-            <TextBlock x:Name="TextBlock_Text" Text="{Binding Path=Text}" TextBlock.TextAlignment="Center" FontSize="14" Width="{Binding ActualWidth, ElementName=StackPanel_Panel, Mode=OneWay}" VerticalAlignment="Center">
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="{Binding Path=TextColor}"/>
-                </TextBlock.Foreground>
-            </TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock x:Name="TextBlock_Text" Text="{Binding Path=Text}" TextBlock.TextAlignment="Center" FontSize="14" Margin="20,0">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{Binding Path=TextColor}"/>
+                    </TextBlock.Foreground>
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
     </Border>
 </UserControl>

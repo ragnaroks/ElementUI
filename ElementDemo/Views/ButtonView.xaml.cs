@@ -25,7 +25,7 @@ namespace ElementDemo.Views
         }
 
         private void Button_Click(object sender, EventArgs e) {
-            if (!(Boolean)this.CheckBox_OnEvent.IsChecked) { return;}
+            if (!(Boolean)this.CheckBox_OnEvent_Button.IsChecked) { return;}
             ElementUI.Button _this =sender as ElementUI.Button;
             MessageBox.Show(_this.Text,"标准按钮");
         }
