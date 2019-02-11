@@ -6,27 +6,27 @@
     xmlns:local="clr-namespace:ElementUI"
     mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=local:Button,IsDesignTimeCreatable=True}"
     DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand" Height="40" MinWidth="98"
-    SnapsToDevicePixels="True" TextOptions.TextFormattingMode="Display" RenderOptions.EdgeMode="Aliased"
+    SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased"
     MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" IsEnabledChanged="UserControl_IsEnabledChanged">
     <UserControl.Resources>
         <Storyboard x:Key="sb_bgc_th">
-            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorHover}"/>
-            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorHover}"/>
-            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorHover}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorHover,Mode=OneWay}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorHover,Mode=OneWay}"/>
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorHover,Mode=OneWay}"/>
         </Storyboard>
         <Storyboard x:Key="sb_bgc_ta">
-            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorActive}"/>
-            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorActive}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorActive,Mode=OneWay}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorActive,Mode=OneWay}"/>
         </Storyboard>
         <Storyboard x:Key="sb_bgc_td">
-            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorDisabled}"/>
-            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorDisabled}"/>
-            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorDisabled}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColorDisabled,Mode=OneWay}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColorDisabled,Mode=OneWay}"/>
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorDisabled,Mode=OneWay}"/>
         </Storyboard>
         <Storyboard x:Key="sb_bgc_tn">
-            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColor}"/>
-            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColor}"/>
-            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColor}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BackgroundColor,Mode=OneWay}"/>
+            <ColorAnimation Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="Border_Wrap" Duration="0:0:0.100" To="{Binding Path=BorderColor,Mode=OneWay}"/>
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColor,Mode=OneWay}"/>
         </Storyboard>
     </UserControl.Resources>
     <UserControl.Triggers>
@@ -45,19 +45,17 @@
     </UserControl.Triggers>
     <Border x:Name="Border_Wrap" BorderThickness="1" CornerRadius="3">
         <Border.BorderBrush>
-            <SolidColorBrush Color="{Binding Path=BorderColor}"></SolidColorBrush>
+            <SolidColorBrush Color="{Binding Path=BorderColor,Mode=OneWay}"></SolidColorBrush>
         </Border.BorderBrush>
         <Border.Background>
-            <SolidColorBrush Color="{Binding Path=BackgroundColor}"></SolidColorBrush>
+            <SolidColorBrush Color="{Binding Path=BackgroundColor,Mode=OneWay}"></SolidColorBrush>
         </Border.Background>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <TextBlock x:Name="TextBlock_Text" Text="{Binding Path=Text}" FontSize="14" Margin="20,0">
-                    <TextBlock.Foreground>
-                        <SolidColorBrush Color="{Binding Path=TextColor}"/>
-                    </TextBlock.Foreground>
-                </TextBlock>
-            </StackPanel>
-        </StackPanel>
+        <Grid>
+            <TextBlock x:Name="TextBlock_Text" Text="{Binding Path=Text,Mode=OneWay}" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="8">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{Binding Path=TextColor,Mode=OneWay}"/>
+                </TextBlock.Foreground>
+            </TextBlock>
+        </Grid>
     </Border>
 </UserControl>

@@ -48,6 +48,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircleButton.xaml.cs">
+      <DependentUpon>CircleButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Button.xaml.cs">
       <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CircleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Button.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
