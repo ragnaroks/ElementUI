@@ -34,5 +34,11 @@ namespace ElementDemo.Views {
             ElementUI.TextButton _this =sender as ElementUI.TextButton;
             MessageBox.Show(_this.Text,"文本按钮 TextButton",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
         }
+
+        private void ImageButton_Click(object sender,EventArgs e) {
+            if (!(Boolean)this.CheckBox_OnEvent_ImageButton.IsChecked) { return;}
+            ElementUI.ImageButton _this =sender as ElementUI.ImageButton;
+            MessageBox.Show(_this.Text,"图片按钮 ImageButton",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
+        }
     }
 }

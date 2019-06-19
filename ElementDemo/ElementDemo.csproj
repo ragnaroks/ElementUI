@@ -114,5 +114,11 @@
       <Name>ElementUI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\icons8-旋转-14_t.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\icons8-旋转-14_w.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

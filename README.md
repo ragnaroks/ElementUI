@@ -5,13 +5,15 @@ base on .Net Framework 4.5,no other dependence.
 origin: [element](https://github.com/ElemeFE/element)
 
 ### ToDo
-* [x] standard Button
-* [x] plain Button
-* [x] circle Button
-* [ ] text Button
+* [x] (standard)Button
+* [x] PlainButton
+* [x] CircleButton (Use unicode character as Icon)
+* [x] TextButton
+* [x] ImageButton (Use image files as Icon)
+* [ ] IconButton (Use font file as Icon)
 
 ### Preview
-![preview](https://i.imgur.com/gkUPa2C.png)
+![preview](https://i.imgur.com/SLqTk95.png)
 
 ### Notice
 Can't implement 100% like origin,beacuse some WPF's limit.  

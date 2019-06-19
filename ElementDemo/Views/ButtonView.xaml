@@ -12,9 +12,7 @@
                     <StackPanel Orientation="Horizontal" Margin="4">
                         <CheckBox x:Name="CheckBox_OnEvent_Button" IsChecked="False"/>
                         <TextBlock Text="响应事件(Click)"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="4">
-                        <CheckBox x:Name="CheckBox_IsEnabled_Button" IsChecked="True"/>
+                        <CheckBox x:Name="CheckBox_IsEnabled_Button" IsChecked="True" Margin="8,0,0,0"/>
                         <TextBlock Text="是否启用(IsEnabled)"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
@@ -39,9 +37,7 @@
                     <StackPanel Orientation="Horizontal" Margin="4">
                         <CheckBox x:Name="CheckBox_OnEvent_PlainButton" IsChecked="False"/>
                         <TextBlock Text="响应事件(Click)"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="4">
-                        <CheckBox x:Name="CheckBox_IsEnabled_PlainButton" IsChecked="True"/>
+                        <CheckBox x:Name="CheckBox_IsEnabled_PlainButton" IsChecked="True" Margin="8,0,0,0"/>
                         <TextBlock Text="是否启用(IsEnabled)"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
@@ -66,9 +62,7 @@
                     <StackPanel Orientation="Horizontal" Margin="4">
                         <CheckBox x:Name="CheckBox_OnEvent_CircleButton" IsChecked="False"/>
                         <TextBlock Text="响应事件(Click)"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="4">
-                        <CheckBox x:Name="CheckBox_IsEnabled_CircleButton" IsChecked="True"/>
+                        <CheckBox x:Name="CheckBox_IsEnabled_CircleButton" IsChecked="True" Margin="8,0,0,0"/>
                         <TextBlock Text="是否启用(IsEnabled)"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
@@ -93,13 +87,37 @@
                     <StackPanel Orientation="Horizontal" Margin="4">
                         <CheckBox x:Name="CheckBox_OnEvent_TextButton" IsChecked="False"/>
                         <TextBlock Text="响应事件(Click)"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="4">
-                        <CheckBox x:Name="CheckBox_IsEnabled_TextButton" IsChecked="True"/>
+                        <CheckBox x:Name="CheckBox_IsEnabled_TextButton" IsChecked="True" Margin="8,0,0,0"/>
                         <TextBlock Text="是否启用(IsEnabled)"/>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="4">
                         <TextBlock>这是一段文本，而这是一个<eui:TextButton Text="文本按钮" Margin="0,0,0,-3" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_TextButton,Path=IsChecked,Mode=OneWay}" Click="TextButton_Click"></eui:TextButton>。</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </GroupItem>
+        </GroupBox>
+        <GroupBox Header="图标按钮 ElementUI.ImageButton" Margin="0,8,0,0">
+            <GroupItem>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="4">
+                        <CheckBox x:Name="CheckBox_OnEvent_ImageButton" IsChecked="False"/>
+                        <TextBlock Text="响应事件(Click)"/>
+                        <CheckBox x:Name="CheckBox_IsEnabled_ImageButton" IsChecked="True" Margin="8,0,0,0"/>
+                        <TextBlock Text="是否启用(IsEnabled)"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <eui:ImageButton Text="刷新" Margin="4" ImageLeft="/ElementDemo;component/Content/icons8-旋转-14_t.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                        <eui:ImageButton Text="刷新" Margin="4" ImageRight="/ElementDemo;component/Content/icons8-旋转-14_t.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                        <eui:ImageButton Text="刷新" Margin="4" ImageLeft="/ElementDemo;component/Content/icons8-旋转-14_t.png" ImageRight="/ElementDemo;component/Content/icons8-旋转-14_t.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                        <eui:ImageButton Text="刷新" Type="primary" Margin="4" ImageLeft="/ElementDemo;component/Content/icons8-旋转-14_w.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                        <eui:ImageButton Text="刷新" Type="primary" Margin="4" ImageRight="/ElementDemo;component/Content/icons8-旋转-14_w.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                        <eui:ImageButton Text="刷新" Type="primary" Margin="4" ImageLeft="/ElementDemo;component/Content/icons8-旋转-14_w.png" ImageRight="/ElementDemo;component/Content/icons8-旋转-14_w.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                        <eui:ImageButton Text="刷新" Size="small" Margin="4" ImageLeft="/ElementDemo;component/Content/icons8-旋转-14_t.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                        <eui:ImageButton Text="刷新" Size="small" Margin="4" ImageRight="/ElementDemo;component/Content/icons8-旋转-14_t.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                        <eui:ImageButton Text="刷新" Size="small" Margin="4" ImageLeft="/ElementDemo;component/Content/icons8-旋转-14_t.png" ImageRight="/ElementDemo;component/Content/icons8-旋转-14_t.png" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_ImageButton,Path=IsChecked,Mode=OneWay}" Click="ImageButton_Click"></eui:ImageButton>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="由于实现方式限制,按钮禁用后的效果有些奇怪"/>
                     </StackPanel>
                 </StackPanel>
             </GroupItem>
