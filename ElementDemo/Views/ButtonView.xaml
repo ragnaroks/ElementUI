@@ -87,5 +87,22 @@
                 </StackPanel>
             </GroupItem>
         </GroupBox>
+        <GroupBox Header="文本按钮 ElementUI.TextButton" Margin="0,8,0,0">
+            <GroupItem>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="4">
+                        <CheckBox x:Name="CheckBox_OnEvent_TextButton" IsChecked="False"/>
+                        <TextBlock Text="响应事件(Click)"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="4">
+                        <CheckBox x:Name="CheckBox_IsEnabled_TextButton" IsChecked="True"/>
+                        <TextBlock Text="是否启用(IsEnabled)"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="4">
+                        <TextBlock>这是一段文本，而这是一个<eui:TextButton Text="文本按钮" Margin="0,0,0,-3" IsEnabled="{Binding ElementName=CheckBox_IsEnabled_TextButton,Path=IsChecked,Mode=OneWay}" Click="TextButton_Click"></eui:TextButton>。</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </GroupItem>
+        </GroupBox>
     </StackPanel>
 </UserControl>

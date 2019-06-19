@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="ElementUI.TextButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:ElementUI"
+    mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=local:Button,IsDesignTimeCreatable=True}"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}" Cursor="Hand"
+    SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased"
+    MouseLeftButtonDown="UserControl_MouseLeftButtonDown" MouseLeftButtonUp="UserControl_MouseLeftButtonUp" IsEnabledChanged="UserControl_IsEnabledChanged">
+    <UserControl.Resources>
+        <Storyboard x:Key="sb_bgc_th">
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorHover,Mode=OneWay}"/>
+        </Storyboard>
+        <Storyboard x:Key="sb_bgc_ta">
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorActive,Mode=OneWay}"/>
+        </Storyboard>
+        <Storyboard x:Key="sb_bgc_td">
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColorDisabled,Mode=OneWay}"/>
+        </Storyboard>
+        <Storyboard x:Key="sb_bgc_tn">
+            <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="TextBlock_Text" Duration="0:0:0.100" To="{Binding Path=TextColor,Mode=OneWay}"/>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="TextBlock_Text">
+            <BeginStoryboard Storyboard="{StaticResource sb_bgc_th}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="TextBlock_Text">
+            <BeginStoryboard Storyboard="{StaticResource sb_bgc_tn}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown" SourceName="TextBlock_Text">
+            <BeginStoryboard Storyboard="{StaticResource sb_bgc_ta}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonUp" SourceName="TextBlock_Text">
+            <BeginStoryboard Storyboard="{StaticResource sb_bgc_th}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <TextBlock x:Name="TextBlock_Text" Text="{Binding Path=Text,Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock.Foreground>
+            <SolidColorBrush Color="{Binding Path=TextColor,Mode=OneWay}"/>
+        </TextBlock.Foreground>
+    </TextBlock>
+</UserControl>

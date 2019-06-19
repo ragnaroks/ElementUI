@@ -28,5 +28,11 @@ namespace ElementDemo.Views {
             ElementUI.CircleButton _this =sender as ElementUI.CircleButton;
             MessageBox.Show(_this.Text+"\n"+_this.ToolTip?.ToString(),"圆形按钮 CircleButton",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
         }
+
+        private void TextButton_Click(object sender,EventArgs e) {
+            if (!(Boolean)this.CheckBox_OnEvent_TextButton.IsChecked) { return;}
+            ElementUI.TextButton _this =sender as ElementUI.TextButton;
+            MessageBox.Show(_this.Text,"文本按钮 TextButton",MessageBoxButton.OK,MessageBoxImage.Information,MessageBoxResult.OK);
+        }
     }
 }
